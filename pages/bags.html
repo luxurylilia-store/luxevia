@@ -4,9 +4,141 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bags & Handbags — LUXEVIA</title>
-<meta name="description" content="Luxury bags and handbags — totes, shoulder bags, clutches, backpacks from the world's top fashion houses.">
+<meta name="description" content="Luxury bags and handbags — LV, Chanel, Hermès, Gucci, Dior, Fendi, Celine, Prada, Burberry, Coach and more.">
 <link rel="stylesheet" href="../css/style.css">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👜</text></svg>">
+<style>
+  /* Brand grid for this page */
+  .brand-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin-bottom: 80px;
+  }
+  .brand-card {
+    position: relative;
+    overflow: hidden;
+    background: var(--panel);
+    aspect-ratio: 3/4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .brand-card--wide { grid-column: span 2; aspect-ratio: 16/7; }
+
+  .brand-card-bg {
+    position: absolute; inset: 0;
+    transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+  .brand-card:hover .brand-card-bg { transform: scale(1.05); }
+
+  /* Unique tones per brand */
+  .bg-lv      { background: radial-gradient(ellipse at 60% 40%, #1e1608 0%, #0a0805 100%); }
+  .bg-chanel  { background: radial-gradient(ellipse at 40% 60%, #111111 0%, #050505 100%); }
+  .bg-gucci   { background: radial-gradient(ellipse at 50% 50%, #0d1208 0%, #060905 100%); }
+  .bg-hermes  { background: radial-gradient(ellipse at 60% 40%, #1a0e06 0%, #0d0804 100%); }
+  .bg-dior    { background: radial-gradient(ellipse at 40% 50%, #0d1018 0%, #060810 100%); }
+  .bg-fendi   { background: radial-gradient(ellipse at 50% 40%, #181208 0%, #100c04 100%); }
+  .bg-celine  { background: radial-gradient(ellipse at 50% 60%, #0e0e14 0%, #08080e 100%); }
+  .bg-celine2 { background: radial-gradient(ellipse at 40% 40%, #100e14 0%, #080810 100%); }
+  .bg-burberry{ background: radial-gradient(ellipse at 60% 50%, #100e0a 0%, #0a0c06 100%); }
+  .bg-prada   { background: radial-gradient(ellipse at 50% 50%, #0a0a0a 0%, #040404 100%); }
+  .bg-coach   { background: radial-gradient(ellipse at 40% 60%, #150e08 0%, #0e0806 100%); }
+
+  .brand-card-emoji {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    opacity: 0.08;
+    transition: opacity 0.5s;
+    pointer-events: none;
+  }
+  .brand-card:hover .brand-card-emoji { opacity: 0.15; }
+
+  .brand-card-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(8,8,8,0.92) 0%, rgba(8,8,8,0.2) 50%, transparent 100%);
+    z-index: 1;
+  }
+  .brand-card-sheen {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(135deg, rgba(198,169,107,0.10) 0%, transparent 55%);
+    opacity: 0; transition: opacity 0.5s;
+  }
+  .brand-card:hover .brand-card-sheen { opacity: 1; }
+
+  .brand-card-frame {
+    position: absolute; inset: 0; z-index: 3;
+    border: 1px solid transparent;
+    transition: border-color 0.4s;
+    pointer-events: none;
+  }
+  .brand-card:hover .brand-card-frame { border-color: rgba(198,169,107,0.5); }
+
+  .brand-card-info {
+    position: relative; z-index: 2;
+    padding: 20px 22px 20px;
+    width: 100%;
+  }
+  .brand-card-tag {
+    display: block;
+    font-size: 0.58rem; font-weight: 500;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+    opacity: 0; transform: translateY(6px);
+    transition: all 0.35s 0.05s;
+  }
+  .brand-card:hover .brand-card-tag { opacity: 1; transform: translateY(0); }
+
+  .brand-card-name {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.1rem, 2vw, 1.6rem);
+    font-weight: 400;
+    color: var(--cream);
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+  }
+  .brand-card-sub {
+    display: block;
+    font-size: 0.65rem; font-weight: 400;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin-bottom: 12px;
+    transition: color 0.3s;
+  }
+  .brand-card:hover .brand-card-sub { color: var(--gold-light); }
+
+  .brand-card-cta {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 0.62rem; font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0; transform: translateY(5px);
+    transition: all 0.35s 0.1s;
+  }
+  .brand-card:hover .brand-card-cta { opacity: 1; transform: translateY(0); }
+
+  .brand-card-vline {
+    position: absolute; top: 20px; left: 20px;
+    width: 1px; height: 36px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    z-index: 2; opacity: 0; transition: opacity 0.4s;
+  }
+  .brand-card:hover .brand-card-vline { opacity: 1; }
+
+  @media (max-width: 900px) {
+    .brand-grid { grid-template-columns: repeat(3, 1fr); }
+    .brand-card--wide { grid-column: span 2; }
+  }
+  @media (max-width: 600px) {
+    .brand-grid { grid-template-columns: repeat(2, 1fr); }
+    .brand-card--wide { grid-column: span 2; aspect-ratio: 16/8; }
+  }
+</style>
 </head>
 <body>
 
@@ -45,183 +177,225 @@
   <div class="cat-hero-inner">
     <a href="../index.html#catalog" class="cat-page-tag">All Collections</a>
     <h1 class="cat-page-h1">Bags &amp; Handbags</h1>
-    <p class="cat-page-desc">From iconic totes and shoulder bags to mini clutches and backpacks — browse our curated selection from the world's most coveted fashion houses.</p>
+    <p class="cat-page-desc">Select a brand below to browse the full collection — each gallery links directly to the latest available styles. Can't find what you're looking for? Message us on WhatsApp.</p>
   </div>
 </div>
 
-<!-- Filter -->
-<div class="filter-bar">
-  <div class="filter-inner">
-    <button class="filter-btn active" data-filter="all">All Brands</button>
-    <button class="filter-btn" data-filter="lv">Louis Vuitton</button>
-    <button class="filter-btn" data-filter="chanel">Chanel</button>
-    <button class="filter-btn" data-filter="gucci">Gucci</button>
-    <button class="filter-btn" data-filter="hermes">Hermès</button>
-    <button class="filter-btn" data-filter="prada">Prada</button>
-    <button class="filter-btn" data-filter="dior">Dior</button>
-    <button class="filter-btn" data-filter="balenciaga">Balenciaga</button>
-    <button class="filter-btn" data-filter="celine">Céline</button>
-    <button class="filter-btn" data-filter="ysl">Saint Laurent</button>
-    <button class="filter-btn" data-filter="other">Other Brands</button>
-  </div>
-</div>
+<!-- Main content -->
+<section style="padding: 48px 0 100px;">
+  <div style="max-width:1320px; margin:0 auto; padding:0 48px;">
 
-<!-- Products -->
-<section class="product-section">
-  <div class="product-grid-wrap">
-
-    <!-- View full album link at top -->
-    <div style="margin-bottom:40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
-      <p class="u-body" style="font-size:0.95rem">Click any item to enquire via WhatsApp · Full album updated regularly</p>
-      <a href="https://3293950449.x.yupoo.com/albums" target="_blank" class="yupoo-cta">
-        View Full Album on Yupoo
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    <!-- Instruction bar -->
+    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; margin-bottom:40px; padding-bottom:24px; border-bottom:1px solid var(--border-sub);">
+      <p style="font-family:'Cormorant Garamond',serif; font-size:1rem; color:var(--muted);">
+        Click any brand to browse its full album → then WhatsApp us the item you want
+      </p>
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20looking%20for%20a%20bag" target="_blank" class="btn btn-outline" style="font-size:0.65rem;">
+        Can't find it? Ask us →
       </a>
     </div>
 
-    <!-- Louis Vuitton -->
-    <div class="brand-section reveal" data-brand="lv">
-      <div class="brand-header">
-        <div>
-          <div class="brand-name">Louis Vuitton</div>
-          <div class="brand-count">Monogram · Damier · Epi · Capucines</div>
+    <!-- Brand grid -->
+    <div class="brand-grid">
+
+      <!-- LV — featured wide -->
+      <a href="https://3293950449.x.yupoo.com/categories/3344155" target="_blank" class="brand-card brand-card--wide reveal">
+        <div class="brand-card-bg bg-lv"></div>
+        <div class="brand-card-emoji">👜</div>
+        <div class="brand-card-overlay"></div>
+        <div class="brand-card-sheen"></div>
+        <div class="brand-card-frame"></div>
+        <div class="brand-card-vline"></div>
+        <div class="brand-card-info">
+          <span class="brand-card-tag">Featured · Full Collection</span>
+          <span class="brand-card-name">Louis Vuitton</span>
+          <span class="brand-card-sub">Neverfull · Speedy · Alma · Capucines · Pochette</span>
+          <span class="brand-card-cta">Browse LV →</span>
         </div>
-        <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Louis%20Vuitton%20bags" target="_blank" class="brand-link">
-          Enquire All LV →
-        </a>
-      </div>
-      <div class="product-grid">
-        <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20the%20LV%20Neverfull%20bag" target="_blank" class="product-card">
-          <div class="product-thumb">👜</div>
-          <div class="product-card-overlay"><span class="product-enquire"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.558 4.121 1.532 5.856L.057 23.882a.5.5 0 00.611.61l6.054-1.47A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.938a9.9 9.9 0 01-5.031-1.37l-.361-.214-3.741.908.937-3.639-.235-.374A9.895 9.895 0 012.062 12C2.062 6.533 6.533 2.062 12 2.062S21.938 6.533 21.938 12 17.467 21.938 12 21.938z"/></svg> Enquire</span></div>
-          <div class="product-card-info"><div class="product-brand-tag">Louis Vuitton</div><div class="product-name">Neverfull MM</div></div>
-        </a>
-        <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20the%20LV%20Speedy%20bag" target="_blank" class="product-card">
-          <div class="product-thumb">👜</div>
-          <div class="product-card-overlay"><span class="product-enquire"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.558 4.121 1.532 5.856L.057 23.882a.5.5 0 00.611.61l6.054-1.47A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.938a9.9 9.9 0 01-5.031-1.37l-.361-.214-3.741.908.937-3.639-.235-.374A9.895 9.895 0 012.062 12C2.062 6.533 6.533 2.062 12 2.062S21.938 6.533 21.938 12 17.467 21.938 12 21.938z"/></svg> Enquire</span></div>
-          <div class="product-card-info"><div class="product-brand-tag">Louis Vuitton</div><div class="product-name">Speedy Bandoulière 30</div></div>
-        </a>
-        <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20the%20LV%20Alma%20bag" target="_blank" class="product-card">
-          <div class="product-thumb">👜</div>
-          <div class="product-card-overlay"><span class="product-enquire"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.558 4.121 1.532 5.856L.057 23.882a.5.5 0 00.611.61l6.054-1.47A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.938a9.9 9.9 0 01-5.031-1.37l-.361-.214-3.741.908.937-3.639-.235-.374A9.895 9.895 0 012.062 12C2.062 6.533 6.533 2.062 12 2.062S21.938 6.533 21.938 12 17.467 21.938 12 21.938z"/></svg> Enquire</span></div>
-          <div class="product-card-info"><div class="product-brand-tag">Louis Vuitton</div><div class="product-name">Alma BB</div></div>
-        </a>
-        <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20an%20LV%20Capucines%20bag" target="_blank" class="product-card">
-          <div class="product-thumb">👜</div>
-          <div class="product-card-overlay"><span class="product-enquire"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.558 4.121 1.532 5.856L.057 23.882a.5.5 0 00.611.61l6.054-1.47A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.938a9.9 9.9 0 01-5.031-1.37l-.361-.214-3.741.908.937-3.639-.235-.374A9.895 9.895 0 012.062 12C2.062 6.533 6.533 2.062 12 2.062S21.938 6.533 21.938 12 17.467 21.938 12 21.938z"/></svg> Enquire</span></div>
-          <div class="product-card-info"><div class="product-brand-tag">Louis Vuitton</div><div class="product-name">Capucines MM</div></div>
-        </a>
-        <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20an%20LV%20Pochette%20bag" target="_blank" class="product-card">
-          <div class="product-thumb">👜</div>
-          <div class="product-card-overlay"><span class="product-enquire"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.558 4.121 1.532 5.856L.057 23.882a.5.5 0 00.611.61l6.054-1.47A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.938a9.9 9.9 0 01-5.031-1.37l-.361-.214-3.741.908.937-3.639-.235-.374A9.895 9.895 0 012.062 12C2.062 6.533 6.533 2.062 12 2.062S21.938 6.533 21.938 12 17.467 21.938 12 21.938z"/></svg> Enquire</span></div>
-          <div class="product-card-info"><div class="product-brand-tag">Louis Vuitton</div><div class="product-name">Pochette Métis</div></div>
-        </a>
-      </div>
-    </div>
+      </a>
 
-    <!-- Chanel -->
-    <div class="brand-section reveal" data-brand="chanel">
-      <div class="brand-header">
-        <div>
-          <div class="brand-name">Chanel</div>
-          <div class="brand-count">Classic Flap · Boy Bag · 19 · 22 · Mini</div>
+      <!-- Chanel -->
+      <a href="https://3293950449.x.yupoo.com/categories/5064891" target="_blank" class="brand-card reveal">
+        <div class="brand-card-bg bg-chanel"></div>
+        <div class="brand-card-emoji">👛</div>
+        <div class="brand-card-overlay"></div>
+        <div class="brand-card-sheen"></div>
+        <div class="brand-card-frame"></div>
+        <div class="brand-card-vline"></div>
+        <div class="brand-card-info">
+          <span class="brand-card-tag">Iconic</span>
+          <span class="brand-card-name">Chanel</span>
+          <span class="brand-card-sub">Classic Flap · Boy · 19 · 22 · Mini</span>
+          <span class="brand-card-cta">Browse Chanel →</span>
         </div>
-        <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Chanel%20bags" target="_blank" class="brand-link">Enquire All Chanel →</a>
-      </div>
-      <div class="product-grid">
-        <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20the%20Chanel%20Classic%20Flap%20bag" target="_blank" class="product-card">
-          <div class="product-thumb">👜</div>
-          <div class="product-card-overlay"><span class="product-enquire"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.558 4.121 1.532 5.856L.057 23.882a.5.5 0 00.611.61l6.054-1.47A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.938a9.9 9.9 0 01-5.031-1.37l-.361-.214-3.741.908.937-3.639-.235-.374A9.895 9.895 0 012.062 12C2.062 6.533 6.533 2.062 12 2.062S21.938 6.533 21.938 12 17.467 21.938 12 21.938z"/></svg> Enquire</span></div>
-          <div class="product-card-info"><div class="product-brand-tag">Chanel</div><div class="product-name">Classic Flap Medium</div></div>
-        </a>
-        <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20the%20Chanel%20Boy%20Bag" target="_blank" class="product-card">
-          <div class="product-thumb">👜</div>
-          <div class="product-card-overlay"><span class="product-enquire"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.558 4.121 1.532 5.856L.057 23.882a.5.5 0 00.611.61l6.054-1.47A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.938a9.9 9.9 0 01-5.031-1.37l-.361-.214-3.741.908.937-3.639-.235-.374A9.895 9.895 0 012.062 12C2.062 6.533 6.533 2.062 12 2.062S21.938 6.533 21.938 12 17.467 21.938 12 21.938z"/></svg> Enquire</span></div>
-          <div class="product-card-info"><div class="product-brand-tag">Chanel</div><div class="product-name">Boy Bag Medium</div></div>
-        </a>
-        <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20the%20Chanel%2019%20Bag" target="_blank" class="product-card">
-          <div class="product-thumb">👜</div>
-          <div class="product-card-overlay"><span class="product-enquire"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.558 4.121 1.532 5.856L.057 23.882a.5.5 0 00.611.61l6.054-1.47A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.938a9.9 9.9 0 01-5.031-1.37l-.361-.214-3.741.908.937-3.639-.235-.374A9.895 9.895 0 012.062 12C2.062 6.533 6.533 2.062 12 2.062S21.938 6.533 21.938 12 17.467 21.938 12 21.938z"/></svg> Enquire</span></div>
-          <div class="product-card-info"><div class="product-brand-tag">Chanel</div><div class="product-name">19 Bag Large</div></div>
-        </a>
-        <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20the%20Chanel%2022%20Bag" target="_blank" class="product-card">
-          <div class="product-thumb">👜</div>
-          <div class="product-card-overlay"><span class="product-enquire"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.558 4.121 1.532 5.856L.057 23.882a.5.5 0 00.611.61l6.054-1.47A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.938a9.9 9.9 0 01-5.031-1.37l-.361-.214-3.741.908.937-3.639-.235-.374A9.895 9.895 0 012.062 12C2.062 6.533 6.533 2.062 12 2.062S21.938 6.533 21.938 12 17.467 21.938 12 21.938z"/></svg> Enquire</span></div>
-          <div class="product-card-info"><div class="product-brand-tag">Chanel</div><div class="product-name">22 Bag</div></div>
-        </a>
-        <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20a%20Chanel%20Mini%20bag" target="_blank" class="product-card">
-          <div class="product-thumb">👜</div>
-          <div class="product-card-overlay"><span class="product-enquire"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.558 4.121 1.532 5.856L.057 23.882a.5.5 0 00.611.61l6.054-1.47A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.938a9.9 9.9 0 01-5.031-1.37l-.361-.214-3.741.908.937-3.639-.235-.374A9.895 9.895 0 012.062 12C2.062 6.533 6.533 2.062 12 2.062S21.938 6.533 21.938 12 17.467 21.938 12 21.938z"/></svg> Enquire</span></div>
-          <div class="product-card-info"><div class="product-brand-tag">Chanel</div><div class="product-name">Mini Flap</div></div>
-        </a>
-      </div>
-    </div>
+      </a>
 
-    <!-- Hermès -->
-    <div class="brand-section reveal" data-brand="hermes">
-      <div class="brand-header">
-        <div>
-          <div class="brand-name">Hermès</div>
-          <div class="brand-count">Birkin · Kelly · Constance · Lindy · Garden Party</div>
+      <!-- Hermès -->
+      <a href="https://3293950449.x.yupoo.com/search/album?uid=1&sort=&q=%E7%88%B1%E9%A9%AC%E4%BB%95" target="_blank" class="brand-card reveal">
+        <div class="brand-card-bg bg-hermes"></div>
+        <div class="brand-card-emoji">🟠</div>
+        <div class="brand-card-overlay"></div>
+        <div class="brand-card-sheen"></div>
+        <div class="brand-card-frame"></div>
+        <div class="brand-card-vline"></div>
+        <div class="brand-card-info">
+          <span class="brand-card-tag">Ultra Luxury</span>
+          <span class="brand-card-name">Hermès</span>
+          <span class="brand-card-sub">Birkin · Kelly · Constance · Lindy</span>
+          <span class="brand-card-cta">Browse Hermès →</span>
         </div>
-        <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Hermes%20bags" target="_blank" class="brand-link">Enquire All Hermès →</a>
-      </div>
-      <div class="product-grid">
-        <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20the%20Hermes%20Birkin%2030" target="_blank" class="product-card">
-          <div class="product-thumb">👜</div>
-          <div class="product-card-overlay"><span class="product-enquire"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.558 4.121 1.532 5.856L.057 23.882a.5.5 0 00.611.61l6.054-1.47A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.938a9.9 9.9 0 01-5.031-1.37l-.361-.214-3.741.908.937-3.639-.235-.374A9.895 9.895 0 012.062 12C2.062 6.533 6.533 2.062 12 2.062S21.938 6.533 21.938 12 17.467 21.938 12 21.938z"/></svg> Enquire</span></div>
-          <div class="product-card-info"><div class="product-brand-tag">Hermès</div><div class="product-name">Birkin 30</div></div>
-        </a>
-        <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20the%20Hermes%20Kelly%2025" target="_blank" class="product-card">
-          <div class="product-thumb">👜</div>
-          <div class="product-card-overlay"><span class="product-enquire"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.558 4.121 1.532 5.856L.057 23.882a.5.5 0 00.611.61l6.054-1.47A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.938a9.9 9.9 0 01-5.031-1.37l-.361-.214-3.741.908.937-3.639-.235-.374A9.895 9.895 0 012.062 12C2.062 6.533 6.533 2.062 12 2.062S21.938 6.533 21.938 12 17.467 21.938 12 21.938z"/></svg> Enquire</span></div>
-          <div class="product-card-info"><div class="product-brand-tag">Hermès</div><div class="product-name">Kelly 25</div></div>
-        </a>
-        <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20the%20Hermes%20Constance%20bag" target="_blank" class="product-card">
-          <div class="product-thumb">👜</div>
-          <div class="product-card-overlay"><span class="product-enquire"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.558 4.121 1.532 5.856L.057 23.882a.5.5 0 00.611.61l6.054-1.47A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.938a9.9 9.9 0 01-5.031-1.37l-.361-.214-3.741.908.937-3.639-.235-.374A9.895 9.895 0 012.062 12C2.062 6.533 6.533 2.062 12 2.062S21.938 6.533 21.938 12 17.467 21.938 12 21.938z"/></svg> Enquire</span></div>
-          <div class="product-card-info"><div class="product-brand-tag">Hermès</div><div class="product-name">Constance 24</div></div>
-        </a>
-        <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20the%20Hermes%20Lindy%20bag" target="_blank" class="product-card">
-          <div class="product-thumb">👜</div>
-          <div class="product-card-overlay"><span class="product-enquire"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.558 4.121 1.532 5.856L.057 23.882a.5.5 0 00.611.61l6.054-1.47A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.938a9.9 9.9 0 01-5.031-1.37l-.361-.214-3.741.908.937-3.639-.235-.374A9.895 9.895 0 012.062 12C2.062 6.533 6.533 2.062 12 2.062S21.938 6.533 21.938 12 17.467 21.938 12 21.938z"/></svg> Enquire</span></div>
-          <div class="product-card-info"><div class="product-brand-tag">Hermès</div><div class="product-name">Lindy 30</div></div>
-        </a>
-        <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20the%20Hermes%20Picotin%20bag" target="_blank" class="product-card">
-          <div class="product-thumb">👜</div>
-          <div class="product-card-overlay"><span class="product-enquire"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.558 4.121 1.532 5.856L.057 23.882a.5.5 0 00.611.61l6.054-1.47A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.938a9.9 9.9 0 01-5.031-1.37l-.361-.214-3.741.908.937-3.639-.235-.374A9.895 9.895 0 012.062 12C2.062 6.533 6.533 2.062 12 2.062S21.938 6.533 21.938 12 17.467 21.938 12 21.938z"/></svg> Enquire</span></div>
-          <div class="product-card-info"><div class="product-brand-tag">Hermès</div><div class="product-name">Picotin Lock 18</div></div>
-        </a>
-      </div>
+      </a>
+
+      <!-- Dior -->
+      <a href="https://3293950449.x.yupoo.com/categories/5206868" target="_blank" class="brand-card reveal">
+        <div class="brand-card-bg bg-dior"></div>
+        <div class="brand-card-emoji">👜</div>
+        <div class="brand-card-overlay"></div>
+        <div class="brand-card-sheen"></div>
+        <div class="brand-card-frame"></div>
+        <div class="brand-card-vline"></div>
+        <div class="brand-card-info">
+          <span class="brand-card-tag">Parisian Chic</span>
+          <span class="brand-card-name">Dior</span>
+          <span class="brand-card-sub">Lady Dior · Saddle · Book Tote · 30 Montaigne</span>
+          <span class="brand-card-cta">Browse Dior →</span>
+        </div>
+      </a>
+
+      <!-- Gucci (categories) -->
+      <a href="https://3293950449.x.yupoo.com/categories/3344210" target="_blank" class="brand-card reveal">
+        <div class="brand-card-bg bg-gucci"></div>
+        <div class="brand-card-emoji">🟢</div>
+        <div class="brand-card-overlay"></div>
+        <div class="brand-card-sheen"></div>
+        <div class="brand-card-frame"></div>
+        <div class="brand-card-vline"></div>
+        <div class="brand-card-info">
+          <span class="brand-card-tag">Italian Luxury</span>
+          <span class="brand-card-name">Gucci</span>
+          <span class="brand-card-sub">Marmont · Dionysus · Jackie · Ophidia</span>
+          <span class="brand-card-cta">Browse Gucci →</span>
+        </div>
+      </a>
+
+      <!-- Fendi -->
+      <a href="https://3293950449.x.yupoo.com/categories/5071640" target="_blank" class="brand-card reveal">
+        <div class="brand-card-bg bg-fendi"></div>
+        <div class="brand-card-emoji">👜</div>
+        <div class="brand-card-overlay"></div>
+        <div class="brand-card-sheen"></div>
+        <div class="brand-card-frame"></div>
+        <div class="brand-card-vline"></div>
+        <div class="brand-card-info">
+          <span class="brand-card-tag">Rome</span>
+          <span class="brand-card-name">Fendi</span>
+          <span class="brand-card-sub">Baguette · Peekaboo · First · Mon Trésor</span>
+          <span class="brand-card-cta">Browse Fendi →</span>
+        </div>
+      </a>
+
+      <!-- Celine (new) -->
+      <a href="https://3293950449.x.yupoo.com/categories/5064891" target="_blank" class="brand-card reveal">
+        <div class="brand-card-bg bg-celine"></div>
+        <div class="brand-card-emoji">🖤</div>
+        <div class="brand-card-overlay"></div>
+        <div class="brand-card-sheen"></div>
+        <div class="brand-card-frame"></div>
+        <div class="brand-card-vline"></div>
+        <div class="brand-card-info">
+          <span class="brand-card-tag">Minimalist</span>
+          <span class="brand-card-name">Celine</span>
+          <span class="brand-card-sub">Classic Box · Triomphe · Ava · Cabas</span>
+          <span class="brand-card-cta">Browse Celine →</span>
+        </div>
+      </a>
+
+      <!-- Celine (classic) -->
+      <a href="https://3293950449.x.yupoo.com/categories/3780249" target="_blank" class="brand-card reveal">
+        <div class="brand-card-bg bg-celine2"></div>
+        <div class="brand-card-emoji">👜</div>
+        <div class="brand-card-overlay"></div>
+        <div class="brand-card-sheen"></div>
+        <div class="brand-card-frame"></div>
+        <div class="brand-card-vline"></div>
+        <div class="brand-card-info">
+          <span class="brand-card-tag">Classic Series</span>
+          <span class="brand-card-name">Celine II</span>
+          <span class="brand-card-sub">Luggage · Belt Bag · Phantom · Nano</span>
+          <span class="brand-card-cta">Browse Celine →</span>
+        </div>
+      </a>
+
+      <!-- Prada -->
+      <a href="https://3293950449.x.yupoo.com/categories/3344354" target="_blank" class="brand-card reveal">
+        <div class="brand-card-bg bg-prada"></div>
+        <div class="brand-card-emoji">🔺</div>
+        <div class="brand-card-overlay"></div>
+        <div class="brand-card-sheen"></div>
+        <div class="brand-card-frame"></div>
+        <div class="brand-card-vline"></div>
+        <div class="brand-card-info">
+          <span class="brand-card-tag">Milan</span>
+          <span class="brand-card-name">Prada</span>
+          <span class="brand-card-sub">Re-Nylon · Saffiano · Galleria · Cleo</span>
+          <span class="brand-card-cta">Browse Prada →</span>
+        </div>
+      </a>
+
+      <!-- Burberry -->
+      <a href="https://3293950449.x.yupoo.com/categories/3344358" target="_blank" class="brand-card reveal">
+        <div class="brand-card-bg bg-burberry"></div>
+        <div class="brand-card-emoji">🏴󠁧󠁢󠁥󠁮󠁧󠁿</div>
+        <div class="brand-card-overlay"></div>
+        <div class="brand-card-sheen"></div>
+        <div class="brand-card-frame"></div>
+        <div class="brand-card-vline"></div>
+        <div class="brand-card-info">
+          <span class="brand-card-tag">British Heritage</span>
+          <span class="brand-card-name">Burberry</span>
+          <span class="brand-card-sub">TB Bag · Lola · Check · Leather Tote</span>
+          <span class="brand-card-cta">Browse Burberry →</span>
+        </div>
+      </a>
+
+      <!-- Coach -->
+      <a href="https://3293950449.x.yupoo.com/categories/3344234" target="_blank" class="brand-card reveal">
+        <div class="brand-card-bg bg-coach"></div>
+        <div class="brand-card-emoji">🐴</div>
+        <div class="brand-card-overlay"></div>
+        <div class="brand-card-sheen"></div>
+        <div class="brand-card-frame"></div>
+        <div class="brand-card-vline"></div>
+        <div class="brand-card-info">
+          <span class="brand-card-tag">New York</span>
+          <span class="brand-card-name">Coach</span>
+          <span class="brand-card-sub">Tabby · Pillow · Willow · Cargo</span>
+          <span class="brand-card-cta">Browse Coach →</span>
+        </div>
+      </a>
+
+      <!-- More brands / enquire -->
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20looking%20for%20a%20specific%20bag%20brand" target="_blank" class="brand-card reveal" style="background:var(--off-black); border:1px solid var(--border);">
+        <div class="brand-card-overlay" style="background:none;"></div>
+        <div class="brand-card-frame"></div>
+        <div class="brand-card-info" style="text-align:center; padding:32px;">
+          <span style="font-size:2rem; display:block; margin-bottom:16px; opacity:0.4;">+</span>
+          <span class="brand-card-name" style="font-size:1rem; display:block; margin-bottom:8px;">Other Brands</span>
+          <span class="brand-card-sub" style="display:block; margin-bottom:16px;">Balenciaga · YSL · Bottega · Loewe · Valentino · and more</span>
+          <span class="brand-card-cta" style="opacity:1; transform:none; color:var(--gold);">Ask us on WhatsApp →</span>
+        </div>
+      </a>
+
     </div>
 
-    <!-- Gucci / Prada / Dior grouped -->
-    <div class="brand-section reveal" data-brand="gucci">
-      <div class="brand-header">
-        <div><div class="brand-name">Gucci</div><div class="brand-count">Marmont · Dionysus · GG Supreme · Ophidia</div></div>
-        <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Gucci%20bags" target="_blank" class="brand-link">Enquire All Gucci →</a>
-      </div>
-      <div class="product-grid">
-        <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20the%20Gucci%20Marmont%20bag" target="_blank" class="product-card"><div class="product-thumb">👜</div><div class="product-card-overlay"><span class="product-enquire"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.558 4.121 1.532 5.856L.057 23.882a.5.5 0 00.611.61l6.054-1.47A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.938a9.9 9.9 0 01-5.031-1.37l-.361-.214-3.741.908.937-3.639-.235-.374A9.895 9.895 0 012.062 12C2.062 6.533 6.533 2.062 12 2.062S21.938 6.533 21.938 12 17.467 21.938 12 21.938z"/></svg> Enquire</span></div><div class="product-card-info"><div class="product-brand-tag">Gucci</div><div class="product-name">Marmont Small</div></div></a>
-        <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20the%20Gucci%20Dionysus%20bag" target="_blank" class="product-card"><div class="product-thumb">👜</div><div class="product-card-overlay"><span class="product-enquire"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.558 4.121 1.532 5.856L.057 23.882a.5.5 0 00.611.61l6.054-1.47A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.938a9.9 9.9 0 01-5.031-1.37l-.361-.214-3.741.908.937-3.639-.235-.374A9.895 9.895 0 012.062 12C2.062 6.533 6.533 2.062 12 2.062S21.938 6.533 21.938 12 17.467 21.938 12 21.938z"/></svg> Enquire</span></div><div class="product-card-info"><div class="product-brand-tag">Gucci</div><div class="product-name">Dionysus Small</div></div></a>
-        <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20the%20Gucci%20Ophidia%20bag" target="_blank" class="product-card"><div class="product-thumb">👜</div><div class="product-card-overlay"><span class="product-enquire"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.558 4.121 1.532 5.856L.057 23.882a.5.5 0 00.611.61l6.054-1.47A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.938a9.9 9.9 0 01-5.031-1.37l-.361-.214-3.741.908.937-3.639-.235-.374A9.895 9.895 0 012.062 12C2.062 6.533 6.533 2.062 12 2.062S21.938 6.533 21.938 12 17.467 21.938 12 21.938z"/></svg> Enquire</span></div><div class="product-card-info"><div class="product-brand-tag">Gucci</div><div class="product-name">Ophidia GG Tote</div></div></a>
-        <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20a%20Gucci%20bamboo%20bag" target="_blank" class="product-card"><div class="product-thumb">👜</div><div class="product-card-overlay"><span class="product-enquire"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.558 4.121 1.532 5.856L.057 23.882a.5.5 0 00.611.61l6.054-1.47A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.938a9.9 9.9 0 01-5.031-1.37l-.361-.214-3.741.908.937-3.639-.235-.374A9.895 9.895 0 012.062 12C2.062 6.533 6.533 2.062 12 2.062S21.938 6.533 21.938 12 17.467 21.938 12 21.938z"/></svg> Enquire</span></div><div class="product-card-info"><div class="product-brand-tag">Gucci</div><div class="product-name">Bamboo 1947 Mini</div></div></a>
-        <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20the%20Gucci%20Jackie%201961%20bag" target="_blank" class="product-card"><div class="product-thumb">👜</div><div class="product-card-overlay"><span class="product-enquire"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.558 4.121 1.532 5.856L.057 23.882a.5.5 0 00.611.61l6.054-1.47A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.938a9.9 9.9 0 01-5.031-1.37l-.361-.214-3.741.908.937-3.639-.235-.374A9.895 9.895 0 012.062 12C2.062 6.533 6.533 2.062 12 2.062S21.938 6.533 21.938 12 17.467 21.938 12 21.938z"/></svg> Enquire</span></div><div class="product-card-info"><div class="product-brand-tag">Gucci</div><div class="product-name">Jackie 1961 Small</div></div></a>
-      </div>
-    </div>
-
-    <!-- Other brands notice -->
-    <div class="brand-section reveal" data-brand="other">
-      <div class="brand-header">
-        <div><div class="brand-name">Prada · Dior · Balenciaga · Céline · Saint Laurent · and more</div><div class="brand-count">Full selection available — ask us for any brand or style</div></div>
-        <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20looking%20for%20a%20specific%20bag%2C%20can%20you%20help?" target="_blank" class="brand-link">Ask for Any Brand →</a>
-      </div>
-      <div style="padding:40px;border:1px solid var(--border-sub);text-align:center;background:var(--panel)">
-        <div style="font-size:2.5rem;margin-bottom:16px;opacity:0.5">👜</div>
-        <p style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--cream);margin-bottom:10px">Looking for a specific bag?</p>
-        <p class="u-body" style="margin-bottom:24px;font-size:0.9rem">We carry 500+ brands. Send us the name, style, size or a photo on WhatsApp and we'll find it for you.</p>
-        <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20looking%20for%20a%20specific%20bag" target="_blank" class="btn btn-gold">Send Enquiry on WhatsApp</a>
-      </div>
+    <!-- Bottom CTA -->
+    <div style="text-align:center; padding:40px; border:1px solid var(--border); background: linear-gradient(135deg, rgba(198,169,107,0.04), transparent);">
+      <p style="font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--cream); margin-bottom:12px;">Found something you like?</p>
+      <p style="font-family:'Cormorant Garamond',serif; font-size:1rem; color:var(--muted); margin-bottom:28px;">Screenshot the item from the album and send it to us on WhatsApp. We'll confirm availability, size and price within minutes.</p>
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%20found%20a%20bag%20I%27m%20interested%20in" target="_blank" class="btn btn-gold">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.558 4.121 1.532 5.856L.057 23.882a.5.5 0 00.611.61l6.054-1.47A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.938a9.9 9.9 0 01-5.031-1.37l-.361-.214-3.741.908.937-3.639-.235-.374A9.895 9.895 0 012.062 12C2.062 6.533 6.533 2.062 12 2.062S21.938 6.533 21.938 12 17.467 21.938 12 21.938z"/></svg>
+        Chat on WhatsApp
+      </a>
     </div>
 
   </div>
@@ -229,7 +403,9 @@
 
 <!-- WhatsApp float -->
 <a href="https://wa.me/8615204002312" target="_blank" id="wa-float" aria-label="Chat on WhatsApp">
-  <span class="wa-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.558 4.121 1.532 5.856L.057 23.882a.5.5 0 00.611.61l6.054-1.47A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.938a9.9 9.9 0 01-5.031-1.37l-.361-.214-3.741.908.937-3.639-.235-.374A9.895 9.895 0 012.062 12C2.062 6.533 6.533 2.062 12 2.062S21.938 6.533 21.938 12 17.467 21.938 12 21.938z"/></svg></span>
+  <span class="wa-icon">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.558 4.121 1.532 5.856L.057 23.882a.5.5 0 00.611.61l6.054-1.47A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.938a9.9 9.9 0 01-5.031-1.37l-.361-.214-3.741.908.937-3.639-.235-.374A9.895 9.895 0 012.062 12C2.062 6.533 6.533 2.062 12 2.062S21.938 6.533 21.938 12 17.467 21.938 12 21.938z"/></svg>
+  </span>
   <span class="wa-label">Chat with Us</span>
 </a>
 
