@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bags & Handbags — LUXEVIA</title>
+<meta name="description" content="Luxury bags — LV, Chanel, Hermès, Gucci, Dior, Fendi, Celine, YSL, Prada, Balenciaga, Loewe, Goyard and more.">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+.brand-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3px;
+  margin-bottom: 60px;
+}
+.brand-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--panel);
+  aspect-ratio: 3/4;
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+}
+.brand-card--wide { grid-column: span 2; aspect-ratio: 16/9; }
+
+/* Real product photo */
+.brand-card-photo {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+  filter: brightness(0.75);
+}
+.brand-card:hover .brand-card-photo {
+  transform: scale(1.06);
+  filter: brightness(0.6);
+}
+
+/* Gradient overlay — heavier at bottom for text legibility */
+.brand-card-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(
+    to top,
+    rgba(8,8,8,0.95) 0%,
+    rgba(8,8,8,0.5) 40%,
+    rgba(8,8,8,0.1) 70%,
+    transparent 100%
+  );
+}
+/* Gold sheen on hover */
+.brand-card-sheen {
+  position: absolute; inset: 0; z-index: 2;
+  background: linear-gradient(135deg, rgba(198,169,107,0.12) 0%, transparent 60%);
+  opacity: 0; transition: opacity 0.5s;
+}
+.brand-card:hover .brand-card-sheen { opacity: 1; }
+
+/* Gold border on hover */
+.brand-card-frame {
+  position: absolute; inset: 0; z-index: 4;
+  border: 1px solid transparent;
+  transition: border-color 0.4s;
+  pointer-events: none;
+}
+.brand-card:hover .brand-card-frame { border-color: rgba(198,169,107,0.6); }
+
+/* Vertical accent line */
+.brand-card-vline {
+  position: absolute; top: 18px; left: 18px;
+  width: 1px; height: 32px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  z-index: 3; opacity: 0; transition: opacity 0.4s;
+}
+.brand-card:hover .brand-card-vline { opacity: 1; }
+
+/* Text block */
+.brand-card-info {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  z-index: 3;
+  padding: 18px 20px 16px;
+}
+.brand-card-tag {
+  display: block;
+  font-size: 0.56rem; font-weight: 500;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 5px;
+  opacity: 0; transform: translateY(5px);
+  transition: all 0.3s 0.04s;
+}
+.brand-card:hover .brand-card-tag { opacity: 1; transform: translateY(0); }
+
+.brand-card-name {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(0.95rem, 1.6vw, 1.35rem);
+  font-weight: 400;
+  color: var(--cream);
+  letter-spacing: 0.04em;
+  margin-bottom: 3px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+.brand-card-sub {
+  display: block;
+  font-size: 0.6rem; font-weight: 400;
+  letter-spacing: 0.1em;
+  color: rgba(240,235,225,0.65);
+  margin-bottom: 10px;
+  transition: color 0.3s;
+  line-height: 1.4;
+}
+.brand-card:hover .brand-card-sub { color: var(--gold-light); }
+
+.brand-card-cta {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 0.58rem; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0; transform: translateY(4px);
+  transition: all 0.3s 0.08s;
+}
+.brand-card:hover .brand-card-cta { opacity: 1; transform: translateY(0); }
+
+/* Section label */
+.section-label {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 20px; margin-top: 8px;
+}
+.section-label-text {
+  font-size: 0.65rem; font-weight: 500;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--gold); white-space: nowrap;
+}
+.section-label-line {
+  flex: 1; height: 1px;
+  background: var(--border-sub);
+}
+
+/* Tip bar */
+.tip-bar {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 20px;
+  background: rgba(198,169,107,0.05);
+  border: 1px solid var(--border);
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+.tip-bar p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem; color: var(--muted); line-height: 1.5;
+  flex: 1;
+}
+.tip-bar strong { color: var(--gold); font-weight: 400; }
+
+/* No-photo fallback card */
+.brand-card-bg-fallback {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 60% 40%, #1a1208 0%, #080808 100%);
+}
+
+@media (max-width: 1024px) {
+  .brand-grid { grid-template-columns: repeat(3,1fr); }
+  .brand-card--wide { grid-column: span 2; }
+}
+@media (max-width: 640px) {
+  .brand-grid { grid-template-columns: repeat(2,1fr); gap:2px; }
+  .brand-card--wide { grid-column: span 2; aspect-ratio: 16/8; }
+  .brand-card { aspect-ratio: 3/4; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="../index.html" class="nav-logo">Luxe<span>via</span></a>
+  <ul class="nav-links">
+    <li><a href="../index.html#catalog">Collections</a></li>
+    <li><a href="bags.html" class="active">Bags</a></li>
+    <li><a href="clothes.html">Clothing</a></li>
+    <li><a href="shoes.html">Shoes</a></li>
+    <li><a href="watches.html">Watches</a></li>
+    <li><a href="jewelry.html">Jewelry</a></li>
+    <li><a href="accessories.html">Accessories</a></li>
+  </ul>
+  <a href="https://wa.me/8615204002312" target="_blank" class="nav-wa">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.558 4.121 1.532 5.856L.057 23.882a.5.5 0 00.611.61l6.054-1.47A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.938a9.9 9.9 0 01-5.031-1.37l-.361-.214-3.741.908.937-3.639-.235-.374A9.895 9.895 0 012.062 12C2.062 6.533 6.533 2.062 12 2.062S21.938 6.533 21.938 12 17.467 21.938 12 21.938z"/></svg>
+    &nbsp;WhatsApp
+  </a>
+  <button class="nav-burger" id="nav-burger"><span></span><span></span><span></span></button>
+</nav>
+<div id="mobile-nav">
+  <a href="../index.html">← Home</a>
+  <a href="bags.html">Bags</a><a href="clothes.html">Clothing</a><a href="shoes.html">Shoes</a>
+  <a href="watches.html">Watches</a><a href="jewelry.html">Jewelry</a>
+  <a href="accessories.html">Accessories</a><a href="wallets.html">Wallets</a>
+  <a href="https://wa.me/8615204002312" target="_blank" style="color:var(--whatsapp)">💬 WhatsApp</a>
+</div>
+
+<!-- Hero -->
+<div class="cat-hero">
+  <div class="cat-hero-bg"></div>
+  <div class="cat-hero-inner">
+    <a href="../index.html#catalog" class="cat-page-tag">All Collections</a>
+    <h1 class="cat-page-h1">Bags &amp; Handbags</h1>
+    <p class="cat-page-desc">Select a brand to browse the full collection. See something you like? Screenshot it and send us a message on WhatsApp — we confirm availability and price within minutes.</p>
+  </div>
+</div>
+
+<section style="padding:40px 0 100px;">
+  <div style="max-width:1320px;margin:0 auto;padding:0 48px;">
+
+    <!-- Tip bar -->
+    <div class="tip-bar reveal">
+      <span style="font-size:1.1rem;flex-shrink:0">💡</span>
+      <p><strong>How to order:</strong> Click a brand → browse photos → screenshot what you want → send to us on <strong>WhatsApp</strong>. No need to read Chinese — just pick from the photos.</p>
+      <a href="https://wa.me/8615204002312" target="_blank" class="btn btn-gold" style="font-size:0.62rem;padding:10px 18px;flex-shrink:0;">WhatsApp Us</a>
+    </div>
+
+    <!-- WOMEN'S BAGS -->
+    <div class="section-label reveal">
+      <span class="section-label-text">Women's Bags</span>
+      <div class="section-label-line"></div>
+    </div>
+
+    <div class="brand-grid">
+
+      <!-- LV — wide featured -->
+      <a href="https://jmp81314.x.yupoo.com/search/album?uid=1&q=LV" target="_blank" class="brand-card brand-card--wide reveal">
+        <img src="../images/bags/lv.jpg" class="brand-card-photo" alt="Louis Vuitton">
+        <div class="brand-card-overlay"></div>
+        <div class="brand-card-sheen"></div>
+        <div class="brand-card-frame"></div>
+        <div class="brand-card-vline"></div>
+        <div class="brand-card-info">
+          <span class="brand-card-tag">Featured · Bestseller</span>
+          <span class="brand-card-name">Louis Vuitton</span>
+          <span class="brand-card-sub">Neverfull · Speedy · Alma · Capucines · Pochette · Onthego</span>
+          <span class="brand-card-cta">Browse Collection →</span>
+        </div>
+      </a>
+
+      <!-- Chanel -->
+      <a href="https://jmp81314.x.yupoo.com/search/album?uid=1&q=CHANEL" target="_blank" class="brand-card reveal">
+        <img src="../images/bags/chanel.jpg" class="brand-card-photo" alt="Chanel">
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div>
+        <div class="brand-card-frame"></div><div class="brand-card-vline"></div>
+        <div class="brand-card-info">
+          <span class="brand-card-tag">Iconic</span>
+          <span class="brand-card-name">Chanel</span>
+          <span class="brand-card-sub">Classic Flap · Boy · 19 · 22 · Coco Handle</span>
+          <span class="brand-card-cta">Browse Collection →</span>
+        </div>
+      </a>
+
+      <!-- Hermès -->
+      <a href="https://jmp81314.x.yupoo.com/search/album?uid=1&q=HERMES" target="_blank" class="brand-card reveal">
+        <img src="../images/bags/hermes.jpg" class="brand-card-photo" alt="Hermès">
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div>
+        <div class="brand-card-frame"></div><div class="brand-card-vline"></div>
+        <div class="brand-card-info">
+          <span class="brand-card-tag">Ultra Luxury</span>
+          <span class="brand-card-name">Hermès</span>
+          <span class="brand-card-sub">Birkin · Kelly · Constance · Lindy · Picotin</span>
+          <span class="brand-card-cta">Browse Collection →</span>
+        </div>
+      </a>
+
+      <!-- Dior -->
+      <a href="https://jmp81314.x.yupoo.com/search/album?uid=1&q=DIOR" target="_blank" class="brand-card reveal">
+        <img src="../images/bags/dior.jpg" class="brand-card-photo" alt="Dior">
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div>
+        <div class="brand-card-frame"></div><div class="brand-card-vline"></div>
+        <div class="brand-card-info">
+          <span class="brand-card-tag">Parisian Chic</span>
+          <span class="brand-card-name">Dior</span>
+          <span class="brand-card-sub">Lady Dior · Saddle · Book Tote · 30 Montaigne</span>
+          <span class="brand-card-cta">Browse Collection →</span>
+        </div>
+      </a>
+
+      <!-- Gucci -->
+      <a href="https://jmp81314.x.yupoo.com/search/album?uid=1&q=GUCCI" target="_blank" class="brand-card reveal">
+        <img src="../images/bags/gucci.jpg" class="brand-card-photo" alt="Gucci">
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div>
+        <div class="brand-card-frame"></div><div class="brand-card-vline"></div>
+        <div class="brand-card-info">
+          <span class="brand-card-tag">Italian Luxury</span>
+          <span class="brand-card-name">Gucci</span>
+          <span class="brand-card-sub">Marmont · Dionysus · Jackie · Ophidia · Bamboo</span>
+          <span class="brand-card-cta">Browse Collection →</span>
+        </div>
+      </a>
+
+      <!-- Fendi -->
+      <a href="https://jmp81314.x.yupoo.com/search/album?uid=1&q=FENDI" target="_blank" class="brand-card reveal">
+        <img src="../images/bags/fendi.jpg" class="brand-card-photo" alt="Fendi">
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div>
+        <div class="brand-card-frame"></div><div class="brand-card-vline"></div>
+        <div class="brand-card-info">
+          <span class="brand-card-tag">Rome</span>
+          <span class="brand-card-name">Fendi</span>
+          <span class="brand-card-sub">Baguette · Peekaboo · First · FF Tote</span>
+          <span class="brand-card-cta">Browse Collection →</span>
+        </div>
+      </a>
+
+      <!-- Celine -->
+      <a href="https://jmp81314.x.yupoo.com/search/album?uid=1&q=CELINE" target="_blank" class="brand-card reveal">
+        <img src="../images/bags/celine.jpg" class="brand-card-photo" alt="Celine">
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div>
+        <div class="brand-card-frame"></div><div class="brand-card-vline"></div>
+        <div class="brand-card-info">
+          <span class="brand-card-tag">Minimalist</span>
+          <span class="brand-card-name">Celine</span>
+          <span class="brand-card-sub">Classic Box · Triomphe · Ava · Cabas</span>
+          <span class="brand-card-cta">Browse Collection →</span>
+        </div>
+      </a>
+
+      <!-- YSL -->
+      <a href="https://jmp81314.x.yupoo.com/search/album?uid=1&q=YSL" target="_blank" class="brand-card reveal">
+        <img src="../images/bags/ysl.jpg" class="brand-card-photo" alt="YSL Saint Laurent">
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div>
+        <div class="brand-card-frame"></div><div class="brand-card-vline"></div>
+        <div class="brand-card-info">
+          <span class="brand-card-tag">Saint Laurent</span>
+          <span class="brand-card-name">YSL</span>
+          <span class="brand-card-sub">Loulou · Kate · Sunset · Niki · Icare</span>
+          <span class="brand-card-cta">Browse Collection →</span>
+        </div>
+      </a>
+
+      <!-- Prada -->
+      <a href="https://jmp81314.x.yupoo.com/search/album?uid=1&q=PRADA" target="_blank" class="brand-card reveal">
+        <img src="../images/bags/prada.jpg" class="brand-card-photo" alt="Prada">
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div>
+        <div class="brand-card-frame"></div><div class="brand-card-vline"></div>
+        <div class="brand-card-info">
+          <span class="brand-card-tag">Milan</span>
+          <span class="brand-card-name">Prada</span>
+          <span class="brand-card-sub">Re-Nylon · Saffiano · Galleria · Cleo</span>
+          <span class="brand-card-cta">Browse Collection →</span>
+        </div>
+      </a>
+
+      <!-- Loewe -->
+      <a href="https://jmp81314.x.yupoo.com/search/album?uid=1&q=LOEWE" target="_blank" class="brand-card reveal">
+        <img src="../images/bags/loewe.jpg" class="brand-card-photo" alt="Loewe">
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div>
+        <div class="brand-card-frame"></div><div class="brand-card-vline"></div>
+        <div class="brand-card-info">
+          <span class="brand-card-tag">Madrid</span>
+          <span class="brand-card-name">Loewe</span>
+          <span class="brand-card-sub">Puzzle · Hammock · Gate · Flamenco</span>
+          <span class="brand-card-cta">Browse Collection →</span>
+        </div>
+      </a>
+
+      <!-- Goyard -->
+      <a href="https://jmp81314.x.yupoo.com/search/album?uid=1&q=Goyard" target="_blank" class="brand-card reveal">
+        <img src="../images/bags/goyard.jpg" class="brand-card-photo" alt="Goyard">
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div>
+        <div class="brand-card-frame"></div><div class="brand-card-vline"></div>
+        <div class="brand-card-info">
+          <span class="brand-card-tag">Rare · Paris</span>
+          <span class="brand-card-name">Goyard</span>
+          <span class="brand-card-sub">St Louis · Artois · Anjou · Belvedere</span>
+          <span class="brand-card-cta">Browse Collection →</span>
+        </div>
+      </a>
+
+      <!-- Miu Miu -->
+      <a href="https://jmp81314.x.yupoo.com/search/album?uid=1&q=MiuMiu" target="_blank" class="brand-card reveal">
+        <img src="../images/bags/miumiu.jpg" class="brand-card-photo" alt="Miu Miu">
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div>
+        <div class="brand-card-frame"></div><div class="brand-card-vline"></div>
+        <div class="brand-card-info">
+          <span class="brand-card-tag">Trending Now</span>
+          <span class="brand-card-name">Miu Miu</span>
+          <span class="brand-card-sub">Wander · Arcadie · Ivy · Madras · Tote</span>
+          <span class="brand-card-cta">Browse Collection →</span>
+        </div>
+      </a>
+
+      <!-- Valentino -->
+      <a href="https://jmp81314.x.yupoo.com/search/album?uid=1&q=VALENTINO" target="_blank" class="brand-card reveal">
+        <img src="../images/bags/valentino.jpg" class="brand-card-photo" alt="Valentino">
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div>
+        <div class="brand-card-frame"></div><div class="brand-card-vline"></div>
+        <div class="brand-card-info">
+          <span class="brand-card-tag">Rome</span>
+          <span class="brand-card-name">Valentino</span>
+          <span class="brand-card-sub">Rockstud · Locò · VLogo · Roman Stud</span>
+          <span class="brand-card-cta">Browse Collection →</span>
+        </div>
+      </a>
+
+      <!-- Burberry -->
+      <a href="https://jmp81314.x.yupoo.com/search/album?uid=1&q=BURBERRY" target="_blank" class="brand-card reveal">
+        <img src="../images/bags/burberry.jpg" class="brand-card-photo" alt="Burberry">
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div>
+        <div class="brand-card-frame"></div><div class="brand-card-vline"></div>
+        <div class="brand-card-info">
+          <span class="brand-card-tag">British Heritage</span>
+          <span class="brand-card-name">Burberry</span>
+          <span class="brand-card-sub">TB · Lola · Shield · Check · Bucket</span>
+          <span class="brand-card-cta">Browse Collection →</span>
+        </div>
+      </a>
+
+      <!-- Coach -->
+      <a href="https://jmp81314.x.yupoo.com/search/album?uid=1&q=COACH" target="_blank" class="brand-card reveal">
+        <img src="../images/bags/coach.jpg" class="brand-card-photo" alt="Coach">
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div>
+        <div class="brand-card-frame"></div><div class="brand-card-vline"></div>
+        <div class="brand-card-info">
+          <span class="brand-card-tag">New York</span>
+          <span class="brand-card-name">Coach</span>
+          <span class="brand-card-sub">Tabby · Pillow · Willow · Cargo · Tote</span>
+          <span class="brand-card-cta">Browse Collection →</span>
+        </div>
+      </a>
+
+      <!-- Tory Burch -->
+      <a href="https://jmp81314.x.yupoo.com/search/album?uid=1&q=TORY%20BURCH" target="_blank" class="brand-card reveal">
+        <img src="../images/bags/toryburch.jpg" class="brand-card-photo" alt="Tory Burch">
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div>
+        <div class="brand-card-frame"></div><div class="brand-card-vline"></div>
+        <div class="brand-card-info">
+          <span class="brand-card-tag">New York</span>
+          <span class="brand-card-name">Tory Burch</span>
+          <span class="brand-card-sub">Eleanor · Fleming · Perry · Kira · T Monogram</span>
+          <span class="brand-card-cta">Browse Collection →</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- MEN'S BAGS -->
+    <div class="section-label reveal" style="margin-top:20px;">
+      <span class="section-label-text">Men's Bags</span>
+      <div class="section-label-line"></div>
+    </div>
+
+    <div class="brand-grid">
+      <a href="https://jmp81314.x.yupoo.com/search/album?uid=1&q=%E7%94%B7%E5%8C%85LV" target="_blank" class="brand-card brand-card--wide reveal">
+        <img src="../images/bags/lv-men.jpg" class="brand-card-photo" alt="LV Men">
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div>
+        <div class="brand-card-frame"></div><div class="brand-card-vline"></div>
+        <div class="brand-card-info">
+          <span class="brand-card-tag">Men · Bestseller</span>
+          <span class="brand-card-name">Louis Vuitton — Men</span>
+          <span class="brand-card-sub">Keepall · Briefcase · Backpack · Messenger · Crossbody</span>
+          <span class="brand-card-cta">Browse Collection →</span>
+        </div>
+      </a>
+
+      <a href="https://jmp81314.x.yupoo.com/search/album?uid=1&q=%E7%94%B7%E5%8C%85GUCCI" target="_blank" class="brand-card reveal">
+        <img src="../images/bags/gucci-men.jpg" class="brand-card-photo" alt="Gucci Men">
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div>
+        <div class="brand-card-frame"></div><div class="brand-card-vline"></div>
+        <div class="brand-card-info">
+          <span class="brand-card-tag">Men</span>
+          <span class="brand-card-name">Gucci — Men</span>
+          <span class="brand-card-sub">GG Supreme · Ophidia · Messenger</span>
+          <span class="brand-card-cta">Browse Collection →</span>
+        </div>
+      </a>
+
+      <a href="https://jmp81314.x.yupoo.com/search/album?uid=1&q=%E7%94%B7%E5%8C%85DIOR" target="_blank" class="brand-card reveal">
+        <img src="../images/bags/dior-men.jpg" class="brand-card-photo" alt="Dior Men">
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div>
+        <div class="brand-card-frame"></div><div class="brand-card-vline"></div>
+        <div class="brand-card-info">
+          <span class="brand-card-tag">Men</span>
+          <span class="brand-card-name">Dior — Men</span>
+          <span class="brand-card-sub">Explorer · Saddle · Backpack · Pouch</span>
+          <span class="brand-card-cta">Browse Collection →</span>
+        </div>
+      </a>
+
+      <a href="https://jmp81314.x.yupoo.com/search/album?uid=1&q=%E7%94%B7%E5%8C%85PRADA" target="_blank" class="brand-card reveal">
+        <img src="../images/bags/prada-men.jpg" class="brand-card-photo" alt="Prada Men">
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div>
+        <div class="brand-card-frame"></div><div class="brand-card-vline"></div>
+        <div class="brand-card-info">
+          <span class="brand-card-tag">Men</span>
+          <span class="brand-card-name">Prada — Men</span>
+          <span class="brand-card-sub">Re-Nylon · Saffiano · Tote · Briefcase</span>
+          <span class="brand-card-cta">Browse Collection →</span>
+        </div>
+      </a>
+
+      <a href="https://jmp81314.x.yupoo.com/albums" target="_blank" class="brand-card reveal" style="background:var(--off-black);border:1px solid var(--border);">
+        <div class="brand-card-overlay" style="background:none;"></div>
+        <div class="brand-card-frame"></div>
+        <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;z-index:2;">
+          <span style="font-size:2rem;margin-bottom:12px;opacity:0.35">+</span>
+          <span class="brand-card-name" style="display:block;margin-bottom:8px;font-size:0.95rem;">More Men's Brands</span>
+          <span class="brand-card-sub" style="display:block;margin-bottom:16px;font-size:0.6rem;">Hermès · Fendi · Prada · BV · Montblanc · Versace · Armani · Givenchy</span>
+          <span style="font-size:0.58rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);">View Full Album →</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="reveal" style="text-align:center;padding:48px 40px;border:1px solid var(--border);background:linear-gradient(135deg,rgba(198,169,107,0.04),transparent);">
+      <p style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--cream);margin-bottom:12px;">Found something you like?</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--muted);margin-bottom:28px;max-width:500px;margin-left:auto;margin-right:auto;">Screenshot the item and send it to us on WhatsApp. We'll confirm availability, colour options and price within minutes.</p>
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%20found%20a%20bag%20I%27m%20interested%20in" target="_blank" class="btn btn-gold">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.558 4.121 1.532 5.856L.057 23.882a.5.5 0 00.611.61l6.054-1.47A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.938a9.9 9.9 0 01-5.031-1.37l-.361-.214-3.741.908.937-3.639-.235-.374A9.895 9.895 0 012.062 12C2.062 6.533 6.533 2.062 12 2.062S21.938 6.533 21.938 12 17.467 21.938 12 21.938z"/></svg>
+        Chat on WhatsApp
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<a href="https://wa.me/8615204002312" target="_blank" id="wa-float">
+  <span class="wa-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.558 4.121 1.532 5.856L.057 23.882a.5.5 0 00.611.61l6.054-1.47A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.938a9.9 9.9 0 01-5.031-1.37l-.361-.214-3.741.908.937-3.639-.235-.374A9.895 9.895 0 012.062 12C2.062 6.533 6.533 2.062 12 2.062S21.938 6.533 21.938 12 17.467 21.938 12 21.938z"/></svg></span>
+  <span class="wa-label">Chat with Us</span>
+</a>
+<script src="../js/main.js"></script>
+</body>
+</html>
