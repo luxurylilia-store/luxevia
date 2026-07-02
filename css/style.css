@@ -432,6 +432,12 @@ button { border: none; background: none; cursor: pointer; font: inherit; color: 
 .cat-bg-hats     { background: radial-gradient(ellipse at 60% 50%, #141208 0%, #0c0c04 100%); }
 .cat-bg-wwallets { background: radial-gradient(ellipse at 40% 60%, #141010 0%, #0c0808 100%); }
 .cat-bg-mwallets { background: radial-gradient(ellipse at 50% 40%, #101418 0%, #080c10 100%); }
+.cat-bg-iced     { background: radial-gradient(ellipse at 50% 40%, #101215 0%, #030304 100%); }
+
+/* Iced Out card — cold silver accent instead of house gold, marks the sub-brand */
+.cat-card--iced:hover .cat-frame { border-color: rgba(220,236,255,0.5); }
+.cat-card--iced .cat-vline { background: linear-gradient(to bottom, #dcecff, transparent); }
+.cat-card--iced:hover .cat-sheen { background: linear-gradient(135deg, rgba(220,236,255,0.14) 0%, transparent 55%); }
 
 .cat-emoji {
   position: absolute; inset: 0;
