@@ -38,14 +38,15 @@
   filter: brightness(0.6);
 }
 
-/* Gradient overlay — heavier at bottom for text legibility */
+/* Caption band — fixed height, pinned to the very bottom so the photo
+   above it stays fully clear and every card reads at the same height */
 .brand-card-overlay {
-  position: absolute; inset: 0; z-index: 1;
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 1;
+  height: 40%;
   background: linear-gradient(
     to top,
-    rgba(8,8,8,0.95) 0%,
-    rgba(8,8,8,0.5) 40%,
-    rgba(8,8,8,0.1) 70%,
+    rgba(6,6,7,0.97) 0%,
+    rgba(6,6,7,0.88) 55%,
     transparent 100%
   );
 }
@@ -75,11 +76,12 @@
 }
 .brand-card:hover .brand-card-vline { opacity: 1; }
 
-/* Text block */
+/* Text block — same fixed footer zone on every card, name/sub always
+   readable (not hover-only, so it works on mobile too) */
 .brand-card-info {
   position: absolute; bottom: 0; left: 0; right: 0;
   z-index: 3;
-  padding: 18px 20px 16px;
+  padding: 16px 20px 16px;
 }
 .brand-card-tag {
   display: block;
@@ -103,13 +105,17 @@
   text-shadow: 0 1px 4px rgba(0,0,0,0.6);
 }
 .brand-card-sub {
-  display: block;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   font-size: 0.6rem; font-weight: 400;
   letter-spacing: 0.1em;
   color: rgba(240,235,225,0.65);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   transition: color 0.3s;
   line-height: 1.4;
+  max-height: 2.8em;
 }
 .brand-card:hover .brand-card-sub { color: var(--gold-light); }
 
