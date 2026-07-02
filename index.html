@@ -105,6 +105,7 @@
   font-weight: 400;
 }
 .process-icon { font-size: 1.3rem; margin-bottom: 12px; }
+.process-body {}
 .process-title {
   font-family: 'Playfair Display', serif;
   font-size: 0.9rem;
@@ -317,6 +318,18 @@
   color: var(--muted);
   line-height: 1.6;
 }
+.qc-feature--link {
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+.qc-feature--link:hover {
+  background: rgba(198,169,107,0.06);
+  box-shadow: inset 0 0 0 1px rgba(198,169,107,0.35);
+}
+.qc-feature--link:hover .qc-feature-title { color: var(--gold); }
+.qc-feature--link .qc-feature-title { transition: color 0.3s; }
 
 /* Responsive */
 @media (max-width: 900px) {
@@ -329,7 +342,29 @@
   .phil-stat:last-child { border-bottom: none; }
 }
 @media (max-width: 600px) {
-  .process-steps { grid-template-columns: 1fr 1fr; }
+  .process-steps {
+    display: flex; flex-direction: column; gap: 0;
+    max-width: 380px; margin: 40px auto 0;
+  }
+  .process-step {
+    display: flex; align-items: flex-start; gap: 16px;
+    text-align: left; padding: 0 0 34px; position: relative;
+  }
+  .process-step:last-child { padding-bottom: 0; }
+  .process-step:not(:last-child)::after {
+    content: '';
+    position: absolute; left: 21px; top: 44px; bottom: 4px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--gold), var(--border-sub) 85%);
+  }
+  .process-num { width: 44px; height: 44px; font-size: 0.95rem; margin: 0; flex-shrink: 0; }
+  .process-body { padding-top: 6px; }
+  .process-icon {
+    display: inline-block; font-size: 0.95rem; margin: 0 6px 0 0;
+    vertical-align: middle;
+  }
+  .process-title { display: inline; margin-bottom: 0; }
+  .process-desc { margin-top: 6px; }
   .philosophy, .process-section, .faq-section, .qc-section, .payment-section { padding: 60px 20px; }
 }
 </style>
@@ -373,9 +408,187 @@
   <div class="hero-grid"></div>
   <div class="hero-inner">
     <div class="hero-text">
-      <p class="hero-eyebrow">Global Luxury Sourcing · Est. Lilia Luxury</p>
-      <h1 class="hero-h1">The World's Finest<br><em>Brands, Curated</em><br>For You</h1>
-      <p class="hero-desc">Premium fashion sourcing across bags, watches, jewelry, clothing and accessories. Every piece inspected on video. Every client served personally.</p>
+      <p class="hero-mq-eyebrow">Iced Out · Cuban Link Collection</p>
+      <div class="hero-mq">
+        <div class="hero-mq-viewport">
+          <div class="hero-mq-track hero-mq-row1">
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-01.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-02.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-03.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-04.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-05.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-06.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-07.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-08.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-09.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-10.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-11.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-12.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-13.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-14.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-15.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-16.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-17.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-18.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-19.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-20.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-21.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-22.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-23.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-24.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-25.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-26.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-27.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-28.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-29.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-30.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-31.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-32.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-33.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-34.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-35.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-36.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-37.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-38.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-39.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-40.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-41.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/bracelets/bracelet-01.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-01.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-02.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-03.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-04.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-05.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-06.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-07.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-08.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-09.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-10.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-11.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-12.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-13.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-14.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-15.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-16.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-17.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-18.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-19.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-20.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-21.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-22.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-23.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-24.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-25.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-26.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-27.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-28.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-29.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-30.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-31.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-32.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-33.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-34.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-35.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-36.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-37.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-38.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-39.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-40.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/necklaces/necklace-41.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/bracelets/bracelet-01.jpg" alt="" loading="lazy"></div>
+    </div>
+        </div>
+        <div class="hero-mq-viewport">
+          <div class="hero-mq-track hero-mq-row2">
+      <div class="hero-mq-item"><img src="images/iced-out/bracelets/bracelet-02.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/bracelets/bracelet-03.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/bracelets/bracelet-04.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/bracelets/bracelet-05.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/bracelets/bracelet-06.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/bracelets/bracelet-07.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/bracelets/bracelet-08.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/bracelets/bracelet-09.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/bracelets/bracelet-10.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/bracelets/bracelet-11.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/bracelets/bracelet-12.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/bracelets/bracelet-13.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/bracelets/bracelet-14.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/bracelets/bracelet-15.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/bracelets/bracelet-16.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/rings/ring-01.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/rings/ring-02.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/rings/ring-03.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/rings/ring-04.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/rings/ring-05.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/rings/ring-06.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/rings/ring-07.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/rings/ring-08.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/rings/ring-09.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/rings/ring-10.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/rings/ring-11.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/rings/ring-12.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/rings/ring-13.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/rings/ring-14.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/rings/ring-15.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/custom/custom-01.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/custom/custom-02.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/custom/custom-03.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/custom/custom-04.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/custom/custom-05.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/custom/custom-06.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/custom/custom-07.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/custom/custom-08.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/custom/custom-09.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/custom/custom-10.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/custom/custom-11.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/custom/custom-12.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/custom/custom-13.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/bracelets/bracelet-02.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/bracelets/bracelet-03.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/bracelets/bracelet-04.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/bracelets/bracelet-05.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/bracelets/bracelet-06.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/bracelets/bracelet-07.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/bracelets/bracelet-08.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/bracelets/bracelet-09.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/bracelets/bracelet-10.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/bracelets/bracelet-11.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/bracelets/bracelet-12.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/bracelets/bracelet-13.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/bracelets/bracelet-14.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/bracelets/bracelet-15.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/bracelets/bracelet-16.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/rings/ring-01.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/rings/ring-02.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/rings/ring-03.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/rings/ring-04.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/rings/ring-05.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/rings/ring-06.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/rings/ring-07.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/rings/ring-08.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/rings/ring-09.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/rings/ring-10.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/rings/ring-11.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/rings/ring-12.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/rings/ring-13.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/rings/ring-14.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/rings/ring-15.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/custom/custom-01.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/custom/custom-02.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/custom/custom-03.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/custom/custom-04.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/custom/custom-05.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/custom/custom-06.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/custom/custom-07.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/custom/custom-08.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/custom/custom-09.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/custom/custom-10.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/custom/custom-11.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/custom/custom-12.jpg" alt="" loading="lazy"></div>
+      <div class="hero-mq-item"><img src="images/iced-out/custom/custom-13.jpg" alt="" loading="lazy"></div>
+    </div>
+        </div>
+      </div>
       <div class="hero-ctas">
         <a href="#catalog" class="btn btn-gold">Browse Collections</a>
         <a href="https://wa.me/8615204002312" target="_blank" class="btn btn-outline">
@@ -481,33 +694,33 @@
     <div class="process-steps reveal">
       <div class="process-step">
         <div class="process-num">1</div>
-        <div class="process-icon">💳</div>
+        <div class="process-body"><div class="process-icon">💳</div>
         <div class="process-title">Payment Received</div>
-        <div class="process-desc">We confirm your payment via PayPal, Zelle, Wise, Western Union or other methods.</div>
+        <div class="process-desc">We confirm your payment via PayPal, Zelle, Wise, Western Union or other methods.</div></div>
       </div>
       <div class="process-step">
         <div class="process-num">2</div>
-        <div class="process-icon">🔍</div>
+        <div class="process-body"><div class="process-icon">🔍</div>
         <div class="process-title">Sourcing</div>
-        <div class="process-desc">We source your exact item — correct model, size, colour and specifications.</div>
+        <div class="process-desc">We source your exact item — correct model, size, colour and specifications.</div></div>
       </div>
       <div class="process-step">
         <div class="process-num">3</div>
-        <div class="process-icon">✅</div>
+        <div class="process-body"><div class="process-icon">✅</div>
         <div class="process-title">Quality Check</div>
-        <div class="process-desc">Every item is thoroughly inspected for quality before it reaches you.</div>
+        <div class="process-desc">Every item is thoroughly inspected for quality before it reaches you.</div></div>
       </div>
       <div class="process-step">
         <div class="process-num">4</div>
-        <div class="process-icon">📹</div>
+        <div class="process-body"><div class="process-icon">📹</div>
         <div class="process-title">Video Confirmation</div>
-        <div class="process-desc">We video call you to show the item live — you approve before it ships.</div>
+        <div class="process-desc">We video call you to show the item live — you approve before it ships.</div></div>
       </div>
       <div class="process-step">
         <div class="process-num">5</div>
-        <div class="process-icon">📦</div>
+        <div class="process-body"><div class="process-icon">📦</div>
         <div class="process-title">Packed &amp; Shipped</div>
-        <div class="process-desc">Discreetly packaged and shipped worldwide. Full tracking provided.</div>
+        <div class="process-desc">Discreetly packaged and shipped worldwide. Full tracking provided.</div></div>
       </div>
     </div>
   </div>
@@ -523,11 +736,11 @@
     </div>
     <div class="qc-inner reveal">
       <div class="qc-features">
-        <div class="qc-feature">
+        <a href="https://www.youtube.com/@luxurylilia" target="_blank" rel="noopener" class="qc-feature qc-feature--link">
           <div class="qc-feature-icon">🎥</div>
           <div class="qc-feature-title">Real Video, Every Time</div>
           <div class="qc-feature-desc">We never send generic stock footage. Every video shows your actual item before shipment.</div>
-        </div>
+        </a>
         <div class="qc-feature">
           <div class="qc-feature-icon">📞</div>
           <div class="qc-feature-title">Live Video Call</div>
