@@ -263,11 +263,11 @@ button { border: none; background: none; cursor: pointer; font: inherit; color: 
 }
 .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
 
-/* Hero photo marquee — replaces the headline block with a scrolling wall
-   of Cuban link stock photos; two rows drifting in opposite directions */
+/* Hero photo marquee — replaces the headline block with a single
+   scrolling strip of Cuban link stock photos, sized to fit the space
+   the old headline occupied (not to add extra height). */
 .hero-mq {
   margin-bottom: 32px;
-  display: flex; flex-direction: column; gap: 6px;
 }
 .hero-mq-eyebrow {
   display: flex; align-items: center; gap: 14px;
@@ -278,24 +278,25 @@ button { border: none; background: none; cursor: pointer; font: inherit; color: 
 .hero-mq-eyebrow::before { content:''; display:block; width:32px; height:1px; background:var(--gold); }
 .hero-mq-viewport {
   overflow: hidden;
+  width: 100%;
+  height: 76px;
   mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
 }
 .hero-mq-track {
-  display: flex; gap: 6px; width: max-content;
+  display: flex; flex-wrap: nowrap; gap: 6px; width: max-content;
+  animation: hero-mq-left 55s linear infinite;
 }
-.hero-mq-row1 { animation: hero-mq-left 90s linear infinite; margin-bottom: 6px; }
-.hero-mq-row2 { animation: hero-mq-right 100s linear infinite; }
+.hero-mq-viewport:hover .hero-mq-track { animation-play-state: paused; }
 @keyframes hero-mq-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-@keyframes hero-mq-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 .hero-mq-item {
-  flex-shrink: 0;
-  width: 84px; height: 84px;
+  flex: 0 0 auto;
+  width: 76px; height: 76px;
   overflow: hidden;
   background: var(--panel);
   border: 1px solid var(--border-sub);
 }
-.hero-mq-item img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.9); }
+.hero-mq-item img { display: block; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.9); }
 
 /* Hero visual panel */
 .hero-visual {
@@ -1036,7 +1037,8 @@ footer {
   }
   .hero-visual { display: none; }
   .hero-h1 { font-size: 2.4rem; }
-  .hero-mq-item { width: 62px; height: 62px; }
+  .hero-mq-viewport { height: 58px; }
+  .hero-mq-item { width: 58px; height: 58px; }
   .hero-scroll { display: none; }
 
   .container { padding: 0 20px; }
