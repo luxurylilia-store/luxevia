@@ -123,8 +123,10 @@
 .brand-card:hover .brand-card-photo{ transform:scale(1.06); filter:brightness(1); }
 .brand-card-overlay{
   position:absolute; inset:0; z-index:1;
-  background:linear-gradient(to top, rgba(4,4,5,0.92) 0%, rgba(4,4,5,0.25) 42%, transparent 68%);
+  background:linear-gradient(to top, rgba(4,4,5,0.55) 0%, transparent 32%);
+  opacity:0; transition:opacity 0.4s;
 }
+.brand-card:hover .brand-card-overlay{ opacity:1; }
 .brand-card-sheen{
   position:absolute; inset:0; z-index:1;
   background:linear-gradient(135deg, rgba(220,236,255,0.12) 0%, transparent 55%);
@@ -135,26 +137,12 @@
   position:absolute; inset:0; z-index:3; border:1px solid transparent; transition:border-color 0.4s; pointer-events:none;
 }
 .brand-card:hover .brand-card-frame{ border-color:rgba(220,236,255,0.45); }
-.brand-card-vline{
-  position:absolute; top:14px; left:14px; width:1px; height:26px; z-index:2;
-  background:linear-gradient(to bottom, var(--ice), transparent);
-  opacity:0; transition:opacity 0.4s;
-}
-.brand-card:hover .brand-card-vline{ opacity:1; }
-.brand-card-info{ position:absolute; bottom:0; left:0; right:0; z-index:2; padding:14px 16px 13px; }
-.brand-card-tag{
-  display:block; font-size:0.56rem; font-weight:500; letter-spacing:0.18em; text-transform:uppercase;
-  color:var(--ice); margin-bottom:4px; opacity:0; transform:translateY(5px); transition:all 0.35s 0.03s;
-}
-.brand-card:hover .brand-card-tag{ opacity:1; transform:translateY(0); }
-.brand-card-name{
-  display:block; font-family:'Jost',sans-serif; font-size:0.78rem; font-weight:500;
-  color:var(--cream); letter-spacing:0.02em; text-shadow:0 1px 4px rgba(0,0,0,0.5);
-}
+.brand-card-cta-wrap{ position:absolute; bottom:12px; left:0; right:0; z-index:2; text-align:center; }
 .brand-card-cta{
-  display:inline-flex; align-items:center; gap:5px; margin-top:5px;
-  font-size:0.56rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase;
-  color:var(--ice); opacity:0; transform:translateY(4px); transition:all 0.35s 0.05s;
+  display:inline-block; padding:6px 14px;
+  font-size:0.56rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase;
+  color:#fff; background:rgba(4,4,5,0.55); border:1px solid var(--ice-line);
+  opacity:0; transform:translateY(6px); transition:all 0.35s 0.03s;
 }
 .brand-card:hover .brand-card-cta{ opacity:1; transform:translateY(0); }
 
@@ -226,7 +214,7 @@
   <a href="../index.html">← Home</a>
   <a href="bags.html">Bags</a><a href="clothes.html">Clothing</a><a href="shoes.html">Shoes</a>
   <a href="watches.html">Watches</a><a href="jewelry.html">Jewelry</a><a href="iced-out.html">Iced Out</a>
-  <a href="accessories.html">Accessories</a><a href="wallets.html">Wallets</a>
+  <a href="accessories.html">Accessories</a>
   <a href="https://wa.me/8615204002312" target="_blank" style="color:var(--whatsapp)">💬 WhatsApp</a>
 </div>
 
@@ -273,374 +261,210 @@
       </div>
       <p class="iced-sec-sub">Pendant styles, tennis-set and rope Cuban necklaces — 5mm to 15mm widths.</p>
       <div class="iced-grid">
-        <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2301%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2301%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 01">
         <img src="../images/iced-out/necklaces/necklace-01.jpg" alt="Cuban Link Necklace 01" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #01</span>
-          <span class="brand-card-name">Necklace 01</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2302%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2302%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 02">
         <img src="../images/iced-out/necklaces/necklace-02.jpg" alt="Cuban Link Necklace 02" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #02</span>
-          <span class="brand-card-name">Necklace 02</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2303%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2303%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 03">
         <img src="../images/iced-out/necklaces/necklace-03.jpg" alt="Cuban Link Necklace 03" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #03</span>
-          <span class="brand-card-name">Necklace 03</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2304%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2304%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 04">
         <img src="../images/iced-out/necklaces/necklace-04.jpg" alt="Cuban Link Necklace 04" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #04</span>
-          <span class="brand-card-name">Necklace 04</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2305%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2305%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 05">
         <img src="../images/iced-out/necklaces/necklace-05.jpg" alt="Cuban Link Necklace 05" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #05</span>
-          <span class="brand-card-name">Necklace 05</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2306%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2306%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 06">
         <img src="../images/iced-out/necklaces/necklace-06.jpg" alt="Cuban Link Necklace 06" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #06</span>
-          <span class="brand-card-name">Necklace 06</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2307%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2307%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 07">
         <img src="../images/iced-out/necklaces/necklace-07.jpg" alt="Cuban Link Necklace 07" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #07</span>
-          <span class="brand-card-name">Necklace 07</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2308%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2308%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 08">
         <img src="../images/iced-out/necklaces/necklace-08.jpg" alt="Cuban Link Necklace 08" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #08</span>
-          <span class="brand-card-name">Necklace 08</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2309%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2309%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 09">
         <img src="../images/iced-out/necklaces/necklace-09.jpg" alt="Cuban Link Necklace 09" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #09</span>
-          <span class="brand-card-name">Necklace 09</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2310%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2310%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 10">
         <img src="../images/iced-out/necklaces/necklace-10.jpg" alt="Cuban Link Necklace 10" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #10</span>
-          <span class="brand-card-name">Necklace 10</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2311%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2311%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 11">
         <img src="../images/iced-out/necklaces/necklace-11.jpg" alt="Cuban Link Necklace 11" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #11</span>
-          <span class="brand-card-name">Necklace 11</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2312%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2312%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 12">
         <img src="../images/iced-out/necklaces/necklace-12.jpg" alt="Cuban Link Necklace 12" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #12</span>
-          <span class="brand-card-name">Necklace 12</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2313%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2313%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 13">
         <img src="../images/iced-out/necklaces/necklace-13.jpg" alt="Cuban Link Necklace 13" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #13</span>
-          <span class="brand-card-name">Necklace 13</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2314%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2314%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 14">
         <img src="../images/iced-out/necklaces/necklace-14.jpg" alt="Cuban Link Necklace 14" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #14</span>
-          <span class="brand-card-name">Necklace 14</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2315%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2315%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 15">
         <img src="../images/iced-out/necklaces/necklace-15.jpg" alt="Cuban Link Necklace 15" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #15</span>
-          <span class="brand-card-name">Necklace 15</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2316%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2316%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 16">
         <img src="../images/iced-out/necklaces/necklace-16.jpg" alt="Cuban Link Necklace 16" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #16</span>
-          <span class="brand-card-name">Necklace 16</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2317%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2317%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 17">
         <img src="../images/iced-out/necklaces/necklace-17.jpg" alt="Cuban Link Necklace 17" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #17</span>
-          <span class="brand-card-name">Necklace 17</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2318%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2318%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 18">
         <img src="../images/iced-out/necklaces/necklace-18.jpg" alt="Cuban Link Necklace 18" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #18</span>
-          <span class="brand-card-name">Necklace 18</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2319%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2319%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 19">
         <img src="../images/iced-out/necklaces/necklace-19.jpg" alt="Cuban Link Necklace 19" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #19</span>
-          <span class="brand-card-name">Necklace 19</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2320%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2320%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 20">
         <img src="../images/iced-out/necklaces/necklace-20.jpg" alt="Cuban Link Necklace 20" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #20</span>
-          <span class="brand-card-name">Necklace 20</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2321%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2321%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 21">
         <img src="../images/iced-out/necklaces/necklace-21.jpg" alt="Cuban Link Necklace 21" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #21</span>
-          <span class="brand-card-name">Necklace 21</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2322%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2322%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 22">
         <img src="../images/iced-out/necklaces/necklace-22.jpg" alt="Cuban Link Necklace 22" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #22</span>
-          <span class="brand-card-name">Necklace 22</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2323%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2323%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 23">
         <img src="../images/iced-out/necklaces/necklace-23.jpg" alt="Cuban Link Necklace 23" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #23</span>
-          <span class="brand-card-name">Necklace 23</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2324%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2324%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 24">
         <img src="../images/iced-out/necklaces/necklace-24.jpg" alt="Cuban Link Necklace 24" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #24</span>
-          <span class="brand-card-name">Necklace 24</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2325%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2325%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 25">
         <img src="../images/iced-out/necklaces/necklace-25.jpg" alt="Cuban Link Necklace 25" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #25</span>
-          <span class="brand-card-name">Necklace 25</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2326%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2326%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 26">
         <img src="../images/iced-out/necklaces/necklace-26.jpg" alt="Cuban Link Necklace 26" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #26</span>
-          <span class="brand-card-name">Necklace 26</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2327%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2327%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 27">
         <img src="../images/iced-out/necklaces/necklace-27.jpg" alt="Cuban Link Necklace 27" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #27</span>
-          <span class="brand-card-name">Necklace 27</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2328%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2328%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 28">
         <img src="../images/iced-out/necklaces/necklace-28.jpg" alt="Cuban Link Necklace 28" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #28</span>
-          <span class="brand-card-name">Necklace 28</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2329%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2329%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 29">
         <img src="../images/iced-out/necklaces/necklace-29.jpg" alt="Cuban Link Necklace 29" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #29</span>
-          <span class="brand-card-name">Necklace 29</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2330%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2330%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 30">
         <img src="../images/iced-out/necklaces/necklace-30.jpg" alt="Cuban Link Necklace 30" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #30</span>
-          <span class="brand-card-name">Necklace 30</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2331%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2331%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 31">
         <img src="../images/iced-out/necklaces/necklace-31.jpg" alt="Cuban Link Necklace 31" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #31</span>
-          <span class="brand-card-name">Necklace 31</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2332%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2332%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 32">
         <img src="../images/iced-out/necklaces/necklace-32.jpg" alt="Cuban Link Necklace 32" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #32</span>
-          <span class="brand-card-name">Necklace 32</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2333%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2333%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 33">
         <img src="../images/iced-out/necklaces/necklace-33.jpg" alt="Cuban Link Necklace 33" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #33</span>
-          <span class="brand-card-name">Necklace 33</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2334%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2334%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 34">
         <img src="../images/iced-out/necklaces/necklace-34.jpg" alt="Cuban Link Necklace 34" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #34</span>
-          <span class="brand-card-name">Necklace 34</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2335%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2335%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 35">
         <img src="../images/iced-out/necklaces/necklace-35.jpg" alt="Cuban Link Necklace 35" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #35</span>
-          <span class="brand-card-name">Necklace 35</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2336%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2336%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 36">
         <img src="../images/iced-out/necklaces/necklace-36.jpg" alt="Cuban Link Necklace 36" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #36</span>
-          <span class="brand-card-name">Necklace 36</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2337%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2337%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 37">
         <img src="../images/iced-out/necklaces/necklace-37.jpg" alt="Cuban Link Necklace 37" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #37</span>
-          <span class="brand-card-name">Necklace 37</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2338%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2338%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 38">
         <img src="../images/iced-out/necklaces/necklace-38.jpg" alt="Cuban Link Necklace 38" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #38</span>
-          <span class="brand-card-name">Necklace 38</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2339%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2339%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 39">
         <img src="../images/iced-out/necklaces/necklace-39.jpg" alt="Cuban Link Necklace 39" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #39</span>
-          <span class="brand-card-name">Necklace 39</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2340%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2340%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 40">
         <img src="../images/iced-out/necklaces/necklace-40.jpg" alt="Cuban Link Necklace 40" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #40</span>
-          <span class="brand-card-name">Necklace 40</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2341%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Necklace%20%2341%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Necklace 41">
         <img src="../images/iced-out/necklaces/necklace-41.jpg" alt="Cuban Link Necklace 41" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #41</span>
-          <span class="brand-card-name">Necklace 41</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
       <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20looking%20for%20necklaces%20beyond%20what%27s%20shown%20on%20the%20Iced%20Out%20page%20%E2%80%94%20can%20you%20send%20more%20options%3F" target="_blank" class="brand-card iced-card iced-ask-card reveal">
         <div class="ask-card-inner">
@@ -662,149 +486,85 @@
       </div>
       <p class="iced-sec-sub">Matching-set Cuban bracelets, sized to fit alongside any necklace above.</p>
       <div class="iced-grid">
-        <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Bracelet%20%2301%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Bracelet%20%2301%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Bracelet 01">
         <img src="../images/iced-out/bracelets/bracelet-01.jpg" alt="Cuban Link Bracelet 01" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #01</span>
-          <span class="brand-card-name">Bracelet 01</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Bracelet%20%2302%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Bracelet%20%2302%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Bracelet 02">
         <img src="../images/iced-out/bracelets/bracelet-02.jpg" alt="Cuban Link Bracelet 02" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #02</span>
-          <span class="brand-card-name">Bracelet 02</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Bracelet%20%2303%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Bracelet%20%2303%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Bracelet 03">
         <img src="../images/iced-out/bracelets/bracelet-03.jpg" alt="Cuban Link Bracelet 03" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #03</span>
-          <span class="brand-card-name">Bracelet 03</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Bracelet%20%2304%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Bracelet%20%2304%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Bracelet 04">
         <img src="../images/iced-out/bracelets/bracelet-04.jpg" alt="Cuban Link Bracelet 04" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #04</span>
-          <span class="brand-card-name">Bracelet 04</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Bracelet%20%2305%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Bracelet%20%2305%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Bracelet 05">
         <img src="../images/iced-out/bracelets/bracelet-05.jpg" alt="Cuban Link Bracelet 05" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #05</span>
-          <span class="brand-card-name">Bracelet 05</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Bracelet%20%2306%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Bracelet%20%2306%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Bracelet 06">
         <img src="../images/iced-out/bracelets/bracelet-06.jpg" alt="Cuban Link Bracelet 06" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #06</span>
-          <span class="brand-card-name">Bracelet 06</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Bracelet%20%2307%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Bracelet%20%2307%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Bracelet 07">
         <img src="../images/iced-out/bracelets/bracelet-07.jpg" alt="Cuban Link Bracelet 07" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #07</span>
-          <span class="brand-card-name">Bracelet 07</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Bracelet%20%2308%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Bracelet%20%2308%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Bracelet 08">
         <img src="../images/iced-out/bracelets/bracelet-08.jpg" alt="Cuban Link Bracelet 08" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #08</span>
-          <span class="brand-card-name">Bracelet 08</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Bracelet%20%2309%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Bracelet%20%2309%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Bracelet 09">
         <img src="../images/iced-out/bracelets/bracelet-09.jpg" alt="Cuban Link Bracelet 09" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #09</span>
-          <span class="brand-card-name">Bracelet 09</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Bracelet%20%2310%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Bracelet%20%2310%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Bracelet 10">
         <img src="../images/iced-out/bracelets/bracelet-10.jpg" alt="Cuban Link Bracelet 10" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #10</span>
-          <span class="brand-card-name">Bracelet 10</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Bracelet%20%2311%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Bracelet%20%2311%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Bracelet 11">
         <img src="../images/iced-out/bracelets/bracelet-11.jpg" alt="Cuban Link Bracelet 11" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #11</span>
-          <span class="brand-card-name">Bracelet 11</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Bracelet%20%2312%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Bracelet%20%2312%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Bracelet 12">
         <img src="../images/iced-out/bracelets/bracelet-12.jpg" alt="Cuban Link Bracelet 12" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #12</span>
-          <span class="brand-card-name">Bracelet 12</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Bracelet%20%2313%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Bracelet%20%2313%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Bracelet 13">
         <img src="../images/iced-out/bracelets/bracelet-13.jpg" alt="Cuban Link Bracelet 13" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #13</span>
-          <span class="brand-card-name">Bracelet 13</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Bracelet%20%2314%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Bracelet%20%2314%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Bracelet 14">
         <img src="../images/iced-out/bracelets/bracelet-14.jpg" alt="Cuban Link Bracelet 14" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #14</span>
-          <span class="brand-card-name">Bracelet 14</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Bracelet%20%2315%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Bracelet%20%2315%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Bracelet 15">
         <img src="../images/iced-out/bracelets/bracelet-15.jpg" alt="Cuban Link Bracelet 15" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #15</span>
-          <span class="brand-card-name">Bracelet 15</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Bracelet%20%2316%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Bracelet%20%2316%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Bracelet 16">
         <img src="../images/iced-out/bracelets/bracelet-16.jpg" alt="Cuban Link Bracelet 16" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #16</span>
-          <span class="brand-card-name">Bracelet 16</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
       <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20looking%20for%20bracelets%20beyond%20what%27s%20shown%20on%20the%20Iced%20Out%20page%20%E2%80%94%20can%20you%20send%20more%20options%3F" target="_blank" class="brand-card iced-card iced-ask-card reveal">
         <div class="ask-card-inner">
@@ -826,140 +586,80 @@
       </div>
       <p class="iced-sec-sub">Bust-down and pavé Cuban-link rings, most sizes available on request.</p>
       <div class="iced-grid">
-        <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Ring%20%2301%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Ring%20%2301%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Ring 01">
         <img src="../images/iced-out/rings/ring-01.jpg" alt="Cuban Link Ring 01" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #01</span>
-          <span class="brand-card-name">Ring 01</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Ring%20%2302%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Ring%20%2302%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Ring 02">
         <img src="../images/iced-out/rings/ring-02.jpg" alt="Cuban Link Ring 02" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #02</span>
-          <span class="brand-card-name">Ring 02</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Ring%20%2303%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Ring%20%2303%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Ring 03">
         <img src="../images/iced-out/rings/ring-03.jpg" alt="Cuban Link Ring 03" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #03</span>
-          <span class="brand-card-name">Ring 03</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Ring%20%2304%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Ring%20%2304%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Ring 04">
         <img src="../images/iced-out/rings/ring-04.jpg" alt="Cuban Link Ring 04" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #04</span>
-          <span class="brand-card-name">Ring 04</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Ring%20%2305%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Ring%20%2305%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Ring 05">
         <img src="../images/iced-out/rings/ring-05.jpg" alt="Cuban Link Ring 05" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #05</span>
-          <span class="brand-card-name">Ring 05</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Ring%20%2306%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Ring%20%2306%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Ring 06">
         <img src="../images/iced-out/rings/ring-06.jpg" alt="Cuban Link Ring 06" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #06</span>
-          <span class="brand-card-name">Ring 06</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Ring%20%2307%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Ring%20%2307%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Ring 07">
         <img src="../images/iced-out/rings/ring-07.jpg" alt="Cuban Link Ring 07" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #07</span>
-          <span class="brand-card-name">Ring 07</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Ring%20%2308%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Ring%20%2308%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Ring 08">
         <img src="../images/iced-out/rings/ring-08.jpg" alt="Cuban Link Ring 08" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #08</span>
-          <span class="brand-card-name">Ring 08</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Ring%20%2309%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Ring%20%2309%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Ring 09">
         <img src="../images/iced-out/rings/ring-09.jpg" alt="Cuban Link Ring 09" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #09</span>
-          <span class="brand-card-name">Ring 09</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Ring%20%2310%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Ring%20%2310%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Ring 10">
         <img src="../images/iced-out/rings/ring-10.jpg" alt="Cuban Link Ring 10" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #10</span>
-          <span class="brand-card-name">Ring 10</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Ring%20%2311%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Ring%20%2311%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Ring 11">
         <img src="../images/iced-out/rings/ring-11.jpg" alt="Cuban Link Ring 11" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #11</span>
-          <span class="brand-card-name">Ring 11</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Ring%20%2312%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Ring%20%2312%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Ring 12">
         <img src="../images/iced-out/rings/ring-12.jpg" alt="Cuban Link Ring 12" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #12</span>
-          <span class="brand-card-name">Ring 12</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Ring%20%2313%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Ring%20%2313%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Ring 13">
         <img src="../images/iced-out/rings/ring-13.jpg" alt="Cuban Link Ring 13" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #13</span>
-          <span class="brand-card-name">Ring 13</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Ring%20%2314%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Ring%20%2314%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Ring 14">
         <img src="../images/iced-out/rings/ring-14.jpg" alt="Cuban Link Ring 14" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #14</span>
-          <span class="brand-card-name">Ring 14</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
-      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Ring%20%2315%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal">
+      <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20interested%20in%20Ring%20%2315%20from%20the%20Iced%20Out%20Cuban%20Link%20collection" target="_blank" class="brand-card iced-card reveal" aria-label="Enquire about Ring 15">
         <img src="../images/iced-out/rings/ring-15.jpg" alt="Cuban Link Ring 15" loading="lazy" class="brand-card-photo">
-        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div><div class="brand-card-vline"></div>
-        <div class="brand-card-info">
-          <span class="brand-card-tag">Cuban Link · #15</span>
-          <span class="brand-card-name">Ring 15</span>
-          <span class="brand-card-cta">Enquire on WhatsApp →</span>
-        </div>
+        <div class="brand-card-overlay"></div><div class="brand-card-sheen"></div><div class="brand-card-frame"></div>
+        <div class="brand-card-cta-wrap"><span class="brand-card-cta">💬 Enquire</span></div>
       </a>
       <a href="https://wa.me/8615204002312?text=Hi%20Luxevia%2C%20I%27m%20looking%20for%20rings%20beyond%20what%27s%20shown%20on%20the%20Iced%20Out%20page%20%E2%80%94%20can%20you%20send%20more%20options%3F" target="_blank" class="brand-card iced-card iced-ask-card reveal">
         <div class="ask-card-inner">
